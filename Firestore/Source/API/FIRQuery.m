@@ -135,7 +135,9 @@ NS_ASSUME_NONNULL_BEGIN
   [self getDocumentsWithOptions:[FIRGetOptions defaultOptions] completion:completion];
 }
 
-- (void)getDocumentsWithOptions:(FIRGetOptions *)getOptions completion:(void (^)(FIRQuerySnapshot *_Nullable snapshot, NSError *_Nullable error))completion {
+- (void)getDocumentsWithOptions:(FIRGetOptions *)getOptions
+                     completion:(void (^)(FIRQuerySnapshot *_Nullable snapshot,
+                                          NSError *_Nullable error))completion {
   if (getOptions.source == FIRCache) {
     [self.firestore.client getDocumentsFromLocalCache:self completion:completion];
     return;
@@ -159,7 +161,12 @@ NS_ASSUME_NONNULL_BEGIN
     [listenerRegistration remove];
 
     if (snapshot.metadata.fromCache && getOptions.source == FIRServer) {
-      completion(nil, [NSError errorWithDomain:FIRFirestoreErrorDomain code:FIRFirestoreErrorCodeUnavailable userInfo:@{NSLocalizedDescriptionKey: @"Failed to get documents from server."}]);
+      completion(nil, [NSError errorWithDomain:FIRFirestoreErrorDomain
+                                          code:FIRFirestoreErrorCodeUnavailable
+                                      userInfo:@{
+                                        NSLocalizedDescriptionKey :
+                                            @"Failed to get documents from server."
+                                      }]);
     } else {
       completion(snapshot, nil);
     }

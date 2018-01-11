@@ -212,15 +212,17 @@ NS_ASSUME_NONNULL_BEGIN
   return [self readDocumentForRef:ref getOptions:[FIRGetOptions defaultOptions]];
 }
 
-- (FIRDocumentSnapshot *)readDocumentForRef:(FIRDocumentReference *)ref getOptions:(FIRGetOptions *)getOptions {
+- (FIRDocumentSnapshot *)readDocumentForRef:(FIRDocumentReference *)ref
+                                 getOptions:(FIRGetOptions *)getOptions {
   __block FIRDocumentSnapshot *result;
 
   XCTestExpectation *expectation = [self expectationWithDescription:@"getData"];
-  [ref getDocumentWithOptions:getOptions completion:^(FIRDocumentSnapshot *doc, NSError *_Nullable error) {
-    XCTAssertNil(error);
-    result = doc;
-    [expectation fulfill];
-  }];
+  [ref getDocumentWithOptions:getOptions
+                   completion:^(FIRDocumentSnapshot *doc, NSError *_Nullable error) {
+                     XCTAssertNil(error);
+                     result = doc;
+                     [expectation fulfill];
+                   }];
   [self awaitExpectations];
 
   return result;
@@ -230,15 +232,17 @@ NS_ASSUME_NONNULL_BEGIN
   return [self readDocumentSetForRef:query getOptions:[FIRGetOptions defaultOptions]];
 }
 
-- (FIRQuerySnapshot *)readDocumentSetForRef:(FIRQuery *)query getOptions:(FIRGetOptions *)getOptions {
+- (FIRQuerySnapshot *)readDocumentSetForRef:(FIRQuery *)query
+                                 getOptions:(FIRGetOptions *)getOptions {
   __block FIRQuerySnapshot *result;
 
   XCTestExpectation *expectation = [self expectationWithDescription:@"getData"];
-  [query getDocumentsWithOptions:getOptions completion:^(FIRQuerySnapshot *documentSet, NSError *error) {
-    XCTAssertNil(error);
-    result = documentSet;
-    [expectation fulfill];
-  }];
+  [query getDocumentsWithOptions:getOptions
+                      completion:^(FIRQuerySnapshot *documentSet, NSError *error) {
+                        XCTAssertNil(error);
+                        result = documentSet;
+                        [expectation fulfill];
+                      }];
   [self awaitExpectations];
 
   return result;

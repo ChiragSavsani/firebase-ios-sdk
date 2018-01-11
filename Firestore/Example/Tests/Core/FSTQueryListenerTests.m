@@ -170,10 +170,11 @@ NS_ASSUME_NONNULL_BEGIN
   FSTDocument *doc1 = FSTTestDoc(@"rooms/Eros", 1, @{@"name" : @"Eros"}, NO);
   FSTDocument *doc2 = FSTTestDoc(@"rooms/Hades", 2, @{@"name" : @"Hades"}, NO);
 
-  FSTListenOptions *options = [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
-                                                             includeDocumentMetadataChanges:NO
-                                                                      waitForSyncWhenOnline:NO
-                                                                                 getOptions:[FIRGetOptions defaultOptions]];
+  FSTListenOptions *options =
+      [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
+                                     includeDocumentMetadataChanges:NO
+                                              waitForSyncWhenOnline:NO
+                                                         getOptions:[FIRGetOptions defaultOptions]];
 
   FSTQueryListener *filteredListener =
       [self listenToQuery:query accumulatingSnapshots:filteredAccum];
@@ -211,10 +212,11 @@ NS_ASSUME_NONNULL_BEGIN
   FSTDocument *doc1Prime = FSTTestDoc(@"rooms/Eros", 1, @{@"name" : @"Eros"}, NO);
   FSTDocument *doc3 = FSTTestDoc(@"rooms/Other", 3, @{@"name" : @"Other"}, NO);
 
-  FSTListenOptions *options = [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:NO
-                                                             includeDocumentMetadataChanges:YES
-                                                                      waitForSyncWhenOnline:NO
-                                                                                 getOptions:[FIRGetOptions defaultOptions]];
+  FSTListenOptions *options =
+      [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:NO
+                                     includeDocumentMetadataChanges:YES
+                                              waitForSyncWhenOnline:NO
+                                                         getOptions:[FIRGetOptions defaultOptions]];
 
   FSTQueryListener *filteredListener =
       [self listenToQuery:query accumulatingSnapshots:filteredAccum];
@@ -262,10 +264,11 @@ NS_ASSUME_NONNULL_BEGIN
   FSTDocument *doc2Prime = FSTTestDoc(@"rooms/Hades", 2, @{@"name" : @"Hades"}, NO);
   FSTDocument *doc3 = FSTTestDoc(@"rooms/Other", 3, @{@"name" : @"Other"}, NO);
 
-  FSTListenOptions *options = [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
-                                                             includeDocumentMetadataChanges:NO
-                                                                      waitForSyncWhenOnline:NO
-                                                                                 getOptions:[FIRGetOptions defaultOptions]];
+  FSTListenOptions *options =
+      [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
+                                     includeDocumentMetadataChanges:NO
+                                              waitForSyncWhenOnline:NO
+                                                         getOptions:[FIRGetOptions defaultOptions]];
 
   FSTQueryListener *fullListener =
       [self listenToQuery:query options:options accumulatingSnapshots:fullAccum];
@@ -329,14 +332,15 @@ NS_ASSUME_NONNULL_BEGIN
   FSTQuery *query = FSTTestQuery(@"rooms");
   FSTDocument *doc1 = FSTTestDoc(@"rooms/Eros", 1, @{@"name" : @"Eros"}, NO);
   FSTDocument *doc2 = FSTTestDoc(@"rooms/Hades", 2, @{@"name" : @"Hades"}, NO);
-  FSTQueryListener *listener =
-      [self listenToQuery:query
-                        options:[[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:NO
-                                                               includeDocumentMetadataChanges:NO
-                                                                        waitForSyncWhenOnline:YES
-                                                                                   getOptions:[FIRGetOptions defaultOptions]]
+  FSTQueryListener *listener = [self
+              listenToQuery:query
+                    options:[[FSTListenOptions alloc]
+                                initWithIncludeQueryMetadataChanges:NO
+                                     includeDocumentMetadataChanges:NO
+                                              waitForSyncWhenOnline:YES
+                                                         getOptions:[FIRGetOptions defaultOptions]]
 
-          accumulatingSnapshots:events];
+      accumulatingSnapshots:events];
 
   FSTView *view = [[FSTView alloc] initWithQuery:query remoteDocuments:[FSTDocumentKeySet keySet]];
   FSTViewSnapshot *snap1 = FSTTestApplyChanges(view, @[ doc1 ], nil);
@@ -374,14 +378,15 @@ NS_ASSUME_NONNULL_BEGIN
   FSTQuery *query = FSTTestQuery(@"rooms");
   FSTDocument *doc1 = FSTTestDoc(@"rooms/Eros", 1, @{@"name" : @"Eros"}, NO);
   FSTDocument *doc2 = FSTTestDoc(@"rooms/Hades", 2, @{@"name" : @"Hades"}, NO);
-  FSTQueryListener *listener =
-      [self listenToQuery:query
-                        options:[[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:NO
-                                                               includeDocumentMetadataChanges:NO
-                                                                        waitForSyncWhenOnline:YES
-                                                                                   getOptions:[FIRGetOptions defaultOptions]]
+  FSTQueryListener *listener = [self
+              listenToQuery:query
+                    options:[[FSTListenOptions alloc]
+                                initWithIncludeQueryMetadataChanges:NO
+                                     includeDocumentMetadataChanges:NO
+                                              waitForSyncWhenOnline:YES
+                                                         getOptions:[FIRGetOptions defaultOptions]]
 
-          accumulatingSnapshots:events];
+      accumulatingSnapshots:events];
 
   FSTView *view = [[FSTView alloc] initWithQuery:query remoteDocuments:[FSTDocumentKeySet keySet]];
   FSTViewSnapshot *snap1 = FSTTestApplyChanges(view, @[ doc1 ], nil);

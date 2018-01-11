@@ -241,10 +241,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (FSTTargetID)addUserListenerWithQuery:(FSTQuery *)query {
   // TODO(dimond): Allow customizing listen options in spec tests
   // TODO(dimond): Change spec tests to verify isFromCache on snapshots
-  FSTListenOptions *options = [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
-                                                             includeDocumentMetadataChanges:YES
-                                                                      waitForSyncWhenOnline:NO
-                                                                                 getOptions:[FIRGetOptions defaultOptions]];
+  FSTListenOptions *options =
+      [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
+                                     includeDocumentMetadataChanges:YES
+                                              waitForSyncWhenOnline:NO
+                                                         getOptions:[FIRGetOptions defaultOptions]];
 
   FSTQueryListener *listener = [[FSTQueryListener alloc]
             initWithQuery:query
