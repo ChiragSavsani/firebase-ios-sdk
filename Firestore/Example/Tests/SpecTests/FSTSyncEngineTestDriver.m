@@ -244,8 +244,7 @@ NS_ASSUME_NONNULL_BEGIN
   FSTListenOptions *options =
       [[FSTListenOptions alloc] initWithIncludeQueryMetadataChanges:YES
                                      includeDocumentMetadataChanges:YES
-                                              waitForSyncWhenOnline:NO
-                                                         getOptions:[FIRGetOptions defaultOptions]];
+                                              waitForSyncWhenOnline:NO];
 
   FSTQueryListener *listener = [[FSTQueryListener alloc]
             initWithQuery:query
